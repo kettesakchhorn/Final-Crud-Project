@@ -12,7 +12,7 @@ export class MovieDashboardComponent implements OnInit {
 
   movieValue!:FormGroup;
 
-  movieObj:MovieModel = new MovieModel;
+  movieObj:MovieModel = new MovieModel;  
 
   movieList:any=[];
 
@@ -21,6 +21,7 @@ export class MovieDashboardComponent implements OnInit {
   btnUpdateshow:boolean = false;
   
   constructor(private formBuilder:FormBuilder, private api:ApiService) { }
+
 
   ngOnInit(): void {
     this.movieValue = this.formBuilder.group({
@@ -50,8 +51,8 @@ export class MovieDashboardComponent implements OnInit {
       alert("Error")
     },
     complete: ()=> {
-      console.log("Movie record added!")
-      alert("Movie record added!")
+      console.log("Movie record added successfully!")
+      alert("Movie record added successfully!")
       this.getMovie();
       this.movieValue.reset();
     }
@@ -120,5 +121,15 @@ export class MovieDashboardComponent implements OnInit {
   deleteAllMovie(){
     
   }
+  
+  key:string = 'id';
+  reverse: boolean = false;
+  sort(key: string){
+    this.key = key;
+    this.reverse = !this.reverse;
+  }
+
+  p:number = 1;
+
 }
 
